@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 function counter() {
+
+    const [counter, setCounter] = useState(0);
 
     return (
 
         <div>
-            counter: 0
+            counter: {counter}
         </div>
     );
 }
