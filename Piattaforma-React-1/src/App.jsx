@@ -1,12 +1,12 @@
-import React from 'react';
-import Helloworld from './components/Helloworld';
+import Counter from './Counter.jsx'
 
 function App() {
+
   return (
-     <>
-     <h1>Hello world</h1>
-     <Helloworld></Helloworld>
-     </>
-)};
+    <>
+      < Counter />
+    </>
+  )
+};
 
 export default App
