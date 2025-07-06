@@ -16,13 +16,13 @@ function TodoList() {
     if (loading) return <p>Caricamento...</p>;
     if (error) return <p>Errore: {error}</p>;
 
-    return (
+    return ( 
         <>
             <h2>lista dei Todo</h2>
 
             <input onChange = {handleOnChange} type="text" placeholder='Cerca' />
             <ul>
-                {data && data.map((todo) => (
+                { filteredTodos && filteredTodos.map((todo) => (
                         <li key={todo.id}> 
                         {todo.title}
                         {todo.completed? 'Completato' : 'Non completato' }
