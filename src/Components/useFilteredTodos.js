@@ -8,7 +8,7 @@ function useFilteredTodos(todos, searchItem) {
         if(!todos) return;
         const filtered = todos.filter ((todos) => todos.title.toLowerCase().includes(searchItem.toLowerCase()));
 
-        setFilteredTodos(filtered);
+        setFilteredTodos(filteredList);
     }, [todos, searchItem]);
 
     return (
