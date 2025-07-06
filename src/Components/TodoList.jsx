@@ -1,11 +1,18 @@
 import useFetch from './Components/useFetch';
 import useFilteredTodos from './useFilteredTodos';
 import { useMemo, useState, useCallback } from 'react';
+import { useTodos } from './TodoContext';
 
 function TodoList() {
 
-    const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/todos');
+    const { todos, loading, error } = useTodos();
     const [searchItem, setSearchItem] = useState('');
+
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, []);
 
     const handleOnChange = useCallback((event) => {
         setSearchItem(event.target.value);
@@ -26,7 +33,7 @@ function TodoList() {
         <>
             <h2>lista dei Todo</h2>
 
-            <input onChange={handleOnChange} type="text" placeholder='Cerca' />
+            <input onChange={handleOnChange} ref = {inputRef} type="text" placeholder='Cerca' />
             <ul>
                 {filteredTodos && filteredTodos.map((todo) => (
                     <li key={todo.id}>
