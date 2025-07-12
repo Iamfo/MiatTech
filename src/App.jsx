@@ -2,19 +2,18 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import About from './Pages/About';
-import Navbar from "./Components/Navbar";
+import LayoutComune from './Layouts/LayoutComune';
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      <div className='container'>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes >
-      </div>
+      <Routes>
+        <Route path="/" element={<LayoutComune />} >
+          <Route path="" element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Route>
+      </Routes>
     </>
   )
 }
