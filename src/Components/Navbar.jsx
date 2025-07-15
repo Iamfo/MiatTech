@@ -7,8 +7,9 @@ const Navbar = () => {
   <nav>
     <img src={logo} alt="logo" width="130px" />
     <ul>
-      <li><Link to="/">Home</Link></li>
+      <li><Link to="/">Home</Link></li>|
       <li><Link to="/about">About</Link></li>
+      <li><Link to="/todo">Todo</Link></li>|
     </ul>
   </nav>
   )
