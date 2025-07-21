@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Home from './Pages/Home';
 import About from './Pages/About';
 import LayoutComune from './Layouts/LayoutComune';
-import Todo from './Pages/TodoList';
+import TodoDetails from './Pages/TodoDetails';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<LayoutComune />} >
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="todo" element={<TodoList />} />
+          <Route path="tododetails" element={<TodoDetails />} />
         </Route>
   ))
 
