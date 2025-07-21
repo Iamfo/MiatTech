@@ -1,21 +1,23 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import LayoutComune from './Layouts/LayoutComune';
-import Todo from './Pages/Todo';
+import Todo from './Pages/TodoList';
 
 function App() {
 
+  const router = createBrowserRouter(createRoutesFromElements(
+        <Route path="/" element={<LayoutComune />} >
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="todo" element={<TodoList />} />
+        </Route>
+  ))
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<LayoutComune />} >
-          <Route path="" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="todo/" element={<Todo />} />
-        </Route>
-      </Routes>
+      <RouterProvider router = {router} />
     </>
   )
 }

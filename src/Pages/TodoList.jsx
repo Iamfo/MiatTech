@@ -1,20 +1,22 @@
-import React from 'react'
 import {Link, useParams, useSearchParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Todo = () => {
+const TodoList = () => {
 
      const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchItem = searchParams.get('search') || '';
   const [filter, setFilter] = useState(searchItem);
 
-  const [todos, setTodos] = useState([
-    { id: "1", titolo: "Fare la spesa" },
-    { id: "2", titolo: "Andare al mare" },
-    { id: "3", titolo: "Allenarsi" },
-    { id: "4", titolo: "Cucinare" },
-  ]);
+  const todos =useSelector((state) => state.todos.todos);
+
+  //const [todos, setTodos] = useState([
+  //  { id: "1", titolo: "Fare la spesa" },
+  //  { id: "2", titolo: "Andare al mare" },
+  //  { id: "3", titolo: "Allenarsi" },
+  //  { id: "4", titolo: "Cucinare" },
+  //]);
 
   useEffect(() => {
     if (filter) {
@@ -29,6 +31,7 @@ const Todo = () => {
   );
 
   const selectedTodo = todos.find(todo => todo.id === id);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -42,6 +45,7 @@ const Todo = () => {
       <ul>
         {filteredTodos.map(todo => (
           <li key={todo.id}>
+            <input type="checkbox" checked={todo.completd} onChange = {() => dispatch(toggleTodo(todo.id))} />
             <Link to={`/todo/${todo.id}`}>{todo.titolo}</Link>
           </li>
         ))}
@@ -52,9 +56,10 @@ const Todo = () => {
           <h3>Dettagli del To-do</h3>
           <p>ID: {selectedTodo.id}</p>
           <p>Titolo: {selectedTodo.titolo}</p>
+          <p>Stato: {selectedTodo.completd? "Completato" : "Da fare"}</p>
         </div>
       )}
     </>
   );
 };
-export default Todo
+export default TodoList
